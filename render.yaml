@@ -1,0 +1,53 @@
+services:
+  # Formhub Backend public service
+  - type: web
+    name: fh-prod-backend1
+    env: node
+    plan: free
+    repo: https://git@github.com:Sapkota00Basanta/Monorepo-Form-Collector.git
+    buildFilter:
+      paths:
+        - apps/backend/**
+    buildCommand: yarn && yarn build --filter=backend # Since,it's a monorepo.
+    startCommand: cd app/backend; yarn start
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: fh-prod-db1
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: fh-prod-redis1
+          property: connectionString
+
+  # Formhub Frontend public static service
+  - type: web
+    name: fh-prod-frontend1
+    plan: free
+    env: static
+    repo: https://git@github.com:Sapkota00Basanta/Monorepo-Form-Collector.git
+    buildFilter:
+      paths:
+        - apps/frontend/**
+    buildCommand: yarn && yarn build --filter=frontend
+    staticPublishPath: ./apps/frontend/build
+    routes: # Redirecting every dynamic route back to index html
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: GRAPHQL_HOST
+        fromService:
+          name: fh-prod-backend1
+          type: web
+          property: host
+
+  # Formhub Redis service
+  - type: redis
+    plan: free
+    name: fh-prod-redis1
+
+# Formhub Database service
+databases:
+  - name: fh-prod-db1
+    type: free
