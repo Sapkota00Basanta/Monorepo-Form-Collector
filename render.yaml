@@ -9,7 +9,7 @@ services:
       paths:
         - apps/backend/**
     buildCommand: yarn && yarn build --filter=backend # Since,it's a monorepo.
-    startCommand: cd app/backend; yarn start
+    startCommand: cd apps/backend; yarn start
     envVars:
       - key: DATABASE_URL
         fromDatabase:
