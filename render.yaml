@@ -50,4 +50,4 @@ services:
 # Formhub Database service
 databases:
   - name: fh-prod-db1
-    type: free
+    plan: free
