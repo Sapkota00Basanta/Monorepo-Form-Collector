@@ -24,7 +24,6 @@ services:
   # Formhub Frontend public static service
   - type: web
     name: fh-prod-frontend1
-    plan: free
     env: static
     repo: https://github.com/Sapkota00Basanta/Monorepo-Form-Collector.git
     buildFilter:
@@ -48,7 +47,6 @@ services:
     plan: free
     name: fh-prod-redis1
     ipAllowList: [] # only follow internal connection
-
 # Formhub Database service
 databases:
   - name: fh-prod-db1
