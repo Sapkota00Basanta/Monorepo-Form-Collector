@@ -4,7 +4,7 @@ services:
     name: fh-prod-backend1
     env: node
     plan: free
-    repo: https://git@github.com:Sapkota00Basanta/Monorepo-Form-Collector.git
+    repo: https://github.com/Sapkota00Basanta/Monorepo-Form-Collector.git
     buildFilter:
       paths:
         - apps/backend/**
@@ -25,7 +25,7 @@ services:
     name: fh-prod-frontend1
     plan: free
     env: static
-    repo: https://git@github.com:Sapkota00Basanta/Monorepo-Form-Collector.git
+    repo: https://github.com/Sapkota00Basanta/Monorepo-Form-Collector.git
     buildFilter:
       paths:
         - apps/frontend/**
