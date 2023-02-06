@@ -1,17 +1,15 @@
 // This modules handles the connection with redis server and assign an worker thread
 import { Queue, Worker } from 'bullmq';
 import ModGenerate from './generate';
+import Redis from 'ioredis';
 
 // Environment varaiable data passed as a constant
 const QUEUE_NAME = 'default';
 
 // Fetching data from docker pass environment
-if (!process.env.REDIS_HOST)
-  console.warn('REDIS_HOST environment value is null');
+if (!process.env.REDIS_URL) console.warn('REDIS_URL environment value is null');
 
-const connection = {
-  host: process.env.REDIS_HOST,
-};
+const connection = new Redis(String(process.env.REDIS_URL));
 
 // Define a queue connection with redis
 const queueServer = new Queue(QUEUE_NAME, { connection });
