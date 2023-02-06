@@ -2,9 +2,13 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": "^18.14.0",
+    "yarn": "^1.22.19"
+  },
   "volta": {
-    "node": "18.13.0",
-    "yarn": "1.22.19"
+    "node": "^18.14.0",
+    "yarn": "^1.22.19"
   },
   "scripts": {
     "build": "rimraf dist && swc ./src -d dist",
