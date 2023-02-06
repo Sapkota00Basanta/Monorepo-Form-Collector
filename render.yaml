@@ -17,6 +17,7 @@ services:
           property: connectionString
       - key: REDIS_URL
         fromService:
+          type: redis
           name: fh-prod-redis1
           property: connectionString
 
