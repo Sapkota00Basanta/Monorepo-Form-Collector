@@ -47,7 +47,10 @@ services:
     plan: free
     name: fh-prod-redis1
     ipAllowList: [] # only follow internal connection
+
 # Formhub Database service
 databases:
   - name: fh-prod-db1
     plan: free
+    ipAllowList: [] # only follow internal connection
+
