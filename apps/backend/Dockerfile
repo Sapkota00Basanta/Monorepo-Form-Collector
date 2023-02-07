@@ -1,4 +1,4 @@
-FROM node:lts AS builder
+FROM node:18.14 AS builder
 # RUN apk update
 
 # Set working directory
@@ -8,7 +8,7 @@ COPY . .
 RUN turbo prune --scope=backend --docker
 
 # Add lockfile and package.json's of isolated subworkspace
-FROM node:lts AS installer
+FROM node:18.14 AS installer
 # RUN apk update
 WORKDIR /app
 
@@ -23,7 +23,7 @@ COPY --from=builder /app/out/full/ .
 COPY turbo.json turbo.json
 RUN yarn turbo run build --filter=backend...
 
-FROM node:lts AS runner
+FROM node:18.14 AS runner
 WORKDIR /app
 
 # # Don't run production as root
