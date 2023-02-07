@@ -2,8 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
-  "volta": {
+  "engines": {
     "node": "^18.14.0"
+  },
+  "volta": {
+    "node": "18.14.0"
   },
   "scripts": {
     "build": "rimraf dist && swc ./src -d dist",
