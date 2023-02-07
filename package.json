@@ -20,9 +20,6 @@
   "engines": {
     "node": "^18.14.0"
   },
-  "volta": {
-    "node": "^18.14.0"
-  },
   "dependencies": {},
   "packageManager": "yarn@1.22.19"
 }
