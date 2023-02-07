@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
-const URL = process.env.GRAPHQL_HOST
-  ? `https://${process.env.GRAPHQL_HOST}.onrender.com/graphql`
+const URL = process.env.REACT_APP_GRAPHQL_HOST
+  ? `https://${process.env.REACT_APP_GRAPHQL_HOST}.onrender.com/graphql`
   : `http://localhost:8000/graphql`;
 
 const client = new ApolloClient({
